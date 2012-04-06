@@ -107,7 +107,9 @@ PRODUCT_COPY_FILES += \
     device/amazon/otter/audio/libaudio.so:/system/lib/libaudio.so \
     device/amazon/otter/audio/alsa.omap4.so:/system/lib/hw/alsa.omap4.so \
     device/amazon/otter/audio/libaudiomodemgeneric.so:/system/lib/libaudiomodemgeneric.so \
-    device/amazon/otter/audio/libasound.so:/system/lib/libasound.so
+    device/amazon/otter/audio/libasound.so:/system/lib/libasound.so \
+    vendor/amazon/otter/proprietary/CHANGELOG.html.gz:/system/etc/CHANGELOG.html.gz \
+    vendor/amazon/otter/proprietary/CLASSIC.html.gz:/system/etc/CLASSIC.html.gz
 
 # Wifi
 #ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
@@ -133,7 +135,6 @@ PRODUCT_PACKAGES += \
 	libaudioutils \
 	audio.a2dp.default \
 	hwprops \
-	CMStats \
 	libaudiohw_legacy \
 	audio.primary.omap4430
 
@@ -163,7 +164,6 @@ PRODUCT_CHARACTERISTICS := nosdcard tablet
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_PACKAGES += \
-	Trebuchet \
 	Launcher2 \
 	Superuser \
 	librs_jni \
@@ -171,7 +171,6 @@ PRODUCT_PACKAGES += \
 	tiwlan.ini \
 	wlan_cu \
 	wlan_loader \
-	libCustomWifi \
 	wpa_supplicant.conf \
 	dhcpcd.conf
 
@@ -199,3 +198,4 @@ endif
 $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 $(call inherit-product-if-exists, vendor/ti/proprietary/omap4/ti-omap4-vendor.mk)
+

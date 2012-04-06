@@ -27,13 +27,24 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 #$(call inherit-product, device/sample/products/backup_overlay.mk)
 # Inherit from otter device
 $(call inherit-product, device/amazon/otter/device.mk)
-$(call inherit-product, vendor/aokp/configs/common_tablet.mk)
+$(call inherit-product, vendor/cn/config/common_tablet.mk)
 $(call inherit-product-if-exists, vendor/amazon/otter/otter-vendor.mk)
 
 # Set those variables here to overwrite the inherited values.
-PRODUCT_NAME := aokp_otter
+PRODUCT_NAME := classic_otter
 PRODUCT_DEVICE := otter
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := Amazon Kindle Fire
 PRODUCT_MANUFACTURER := Amazon
 PRODUCT_RELEASE_NAME := KFire
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=otter \
+    BUILD_ID=6.2.2_G1011999  \
+    BUILD_FINGERPRINT="amazon/otter_ics/classic_otter:4.0.3/6.2.2/eng.leoisright.20120405.110347:user/release-keys" \
+    PRIVATE_BUILD_DESC="classic_otter-user 4.0.3 6.2.2 eng.leoisright.20120405.110347 release-keys"
+
+# Set up the product codename, build version & MOTD.
+PRODUCT_CODENAME := Butta
+PRODUCT_VERSION_DEVICE_SPECIFIC := v1
+
+PRODUCT_MOTD :="Thank you for choosing Classicnerd Otter\nGet the latest rom at www.classicnerd.net - enjoy the possibilities"
