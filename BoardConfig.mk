@@ -23,6 +23,7 @@ USE_CAMERA_STUB := true
 #DSURFACEFLINGER_FORCE_SCREEN_RELEASE := true
 BOARD_HAVE_FAKE_GPS := true
 #BOARD_CUSTOM_USB_CONTROLLER := ../../device/amazon/otter/UsbController.cpp
+TARGET_OTA_ASSERT_SKIP := true
 
 # inherit from the proprietary version
 -include vendor/amazon/otter/BoardConfigVendor.mk
@@ -47,7 +48,6 @@ TARGET_NO_BOOTLOADER := true
 TARGET_PROVIDES_RELEASETOOLS := true
 TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/amazon/otter/releasetools/otter_img_from_target_files
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/amazon/otter/releasetools/otter_ota_from_target_files
-
 
 
 BOARD_KERNEL_BASE := 0x80000000
@@ -88,12 +88,14 @@ TARGET_PROVIDES_INIT_RC := true
 
 # Do da wifi
 USES_TI_WL1283 := true
-
+BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
+#BOARD_HOSTAPD_DRIVER        := CUSTOM
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := libCustomWifi
 WPA_SUPPLICANT_VERSION      := VER_0_6_X
 HOSTAPD_VERSION             := VER_0_6_X
 BOARD_WLAN_DEVICE           := wl1283
 BOARD_SOFTAP_DEVICE         := wl1283
-#BOARD_WLAN_TI_STA_DK_ROOT   := system/wlan/ti/wilink_6_1
+BOARD_WLAN_TI_STA_DK_ROOT   := system/wlan/ti/wilink_6_1
 WIFI_DRIVER_MODULE_PATH     := "/system/etc/wifi/tiwlan_drv.ko"
 WIFI_DRIVER_MODULE_NAME     := "tiwlan_drv"
 WIFI_DRIVER_MODULE_ARG      := ""
@@ -162,3 +164,4 @@ MISSING_EGL_PIXEL_FORMAT_YV12 := true
 MISSING_GRALLOC_BUFFERS := true
 ##BOARD_GL_OES_EGL_IMG_EXTERNAL_HACK := true
 BOARD_USE_LEGACY_TOUCHSCREEN := true
+

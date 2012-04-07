@@ -25,6 +25,7 @@ else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
+$(call inherit-product, vendor/cn/config/common_tablet.mk)
 $(call inherit-product-if-exists, vendor/amazon/otter/otter-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS := device/amazon/otter/overlay
@@ -35,6 +36,9 @@ DEVICE_PACKAGE_OVERLAYS := device/amazon/otter/overlay
 # if the xhdpi doesn't exist.
 PRODUCT_AAPT_CONFIG := normal mdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	persist.sys.usb.config=mtp
 
 PRODUCT_PACKAGES := \
 	lights.otter \
@@ -107,9 +111,7 @@ PRODUCT_COPY_FILES += \
     device/amazon/otter/audio/libaudio.so:/system/lib/libaudio.so \
     device/amazon/otter/audio/alsa.omap4.so:/system/lib/hw/alsa.omap4.so \
     device/amazon/otter/audio/libaudiomodemgeneric.so:/system/lib/libaudiomodemgeneric.so \
-    device/amazon/otter/audio/libasound.so:/system/lib/libasound.so \
-    vendor/amazon/otter/proprietary/CHANGELOG.html.gz:/system/etc/CHANGELOG.html.gz \
-    vendor/amazon/otter/proprietary/CLASSIC.html.gz:/system/etc/CLASSIC.html.gz
+    device/amazon/otter/audio/libasound.so:/system/lib/libasound.so
 
 # Wifi
 #ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
@@ -119,7 +121,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES := \
 	wifi.interface=tiwlan0 \
-	wifi.supplicant_scan_interval=90
+	wifi.supplicant_scan_interval=60
 
 PRODUCT_COPY_FILES += \
 	device/amazon/otter/misc/ilitek_i2c.idc:system/usr/idc/ilitek_i2c.idc
@@ -135,6 +137,7 @@ PRODUCT_PACKAGES += \
 	libaudioutils \
 	audio.a2dp.default \
 	hwprops \
+	CMStats \
 	libaudiohw_legacy \
 	audio.primary.omap4430
 
@@ -164,6 +167,7 @@ PRODUCT_CHARACTERISTICS := nosdcard tablet
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_PACKAGES += \
+	Trebuchet \
 	Launcher2 \
 	Superuser \
 	librs_jni \
@@ -171,11 +175,9 @@ PRODUCT_PACKAGES += \
 	tiwlan.ini \
 	wlan_cu \
 	wlan_loader \
+	libCustomWifi \
 	wpa_supplicant.conf \
 	dhcpcd.conf
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	persist.sys.usb.config=mtp
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
