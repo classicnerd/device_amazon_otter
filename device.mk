@@ -119,7 +119,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES := \
 	wifi.interface=tiwlan0 \
-	wifi.supplicant_scan_interval=60
+	wifi.supplicant_scan_interval=90
 
 PRODUCT_COPY_FILES += \
 	device/amazon/otter/misc/ilitek_i2c.idc:system/usr/idc/ilitek_i2c.idc
