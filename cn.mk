@@ -46,5 +46,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 # Set up the product codename, build version & MOTD.
 PRODUCT_CODENAME := Butta
 PRODUCT_VERSION_DEVICE_SPECIFIC := v1
-
-PRODUCT_MOTD :="Thank you for choosing Classicnerd Otter\nGet the latest rom at www.classicnerd.net\nEnjoy the possibilities"
